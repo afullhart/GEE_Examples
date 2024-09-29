@@ -1,4 +1,4 @@
-//Downloads 1 year precipitation daily time series from prism daily
+//Downloads 1 year of daily precipitation time series from prism daily
 //The for loop allows one time series to be exported per station.
 
 var point_fc = ee.FeatureCollection('projects/ee-andrewfullhart/assets/station_points');
