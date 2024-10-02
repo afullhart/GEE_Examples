@@ -1,5 +1,6 @@
 //Modified Fournier Index
-//The js code editor will show a visualization. No image is exported/no task.
+//The js code editor will show a visualization. 
+//No image is exported/no task unless export function is uncommented
 
 var prism_ic = ee.ImageCollection('OREGONSTATE/PRISM/AN81m');
 
@@ -29,4 +30,13 @@ var sqr_ic = month_ic.map(squared_fn);
 var sqrsum_im = sqr_ic.sum();
 var mfi_im = sqrsum_im.divide(annual_im);
 Map.addLayer(mfi_im, null, 'mfi');
+
+Export.image.toDrive({
+  image:mfi_im, 
+  description:'prism_mfi',
+  folder:'GEE_Downloads',
+  scale:2000,
+  maxPixels:1e9
+});
+
 
